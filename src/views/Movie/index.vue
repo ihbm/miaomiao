@@ -4,7 +4,7 @@
     <div id="content">
       <div class="movie_menu">
         <router-link tag="div" to="/movie/city" class="city_name">
-          <span>大连</span>
+          <span>{{citychange}}</span>
           <i class="iconfont icon-lower-triangle"></i>
         </router-link>
         <div class="hot_swtich">
@@ -27,10 +27,20 @@ import Header from "@/components/Header";
 import TabBar from "@/components/TabBar";
 export default {
   name: "Movie",
+  data() {
+    return {
+      city:null
+    }
+  },
   components: {
     Header,
     TabBar,
   },
+  computed: {
+    citychange: function(){
+     return this.city=decodeURIComponent(localStorage.getItem("cityName"))
+    }
+  }
 };
 </script>
 <style scoped>
