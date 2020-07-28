@@ -1,5 +1,7 @@
 <template>
   <div class="movie_body">
+    <Loading v-if="isLoading" />
+    <Scroller v-else>
     <ul>
       <li v-for="item in movielist" :key="item.filmId">
         <div class="pic_show">
@@ -16,6 +18,7 @@
         <div class="btn_pre">预售</div>
       </li>
     </ul>
+    </Scroller>
   </div>
 </template>
 <script>
@@ -29,7 +32,8 @@ export default {
   name: "NowPlaying",
   data() {
     return {
-	  movielist: [],
+    movielist: [],
+    isLoading: true,
     };
   },
   mounted() {
@@ -42,6 +46,7 @@ export default {
         "X-Host": "mall.film-ticket.film.list",
       },
     }).then((res) => {
+      this.isLoading=false;
 	  this.movielist = res.data.data.films;
 	  
    

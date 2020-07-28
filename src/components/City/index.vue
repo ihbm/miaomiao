@@ -109,7 +109,8 @@ export default {
       this.$refs.city_sort.parentNode.scrollTop = h2[index].offsetTop;
 	},
      handleClick(id,name){
-      console.log(id,name)
+      // console.log(id,name)
+       this.$store.commit('city/CITY_INFO',{ name , id });
       localStorage.setItem("cityId",id);
       localStorage.setItem("cityName",encodeURIComponent(name));
       this.$router.push(`/movie`)
