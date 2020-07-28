@@ -3,7 +3,7 @@
     <Loading v-if="isLoading" />
     <Scroller v-else>
     <ul>
-      <li v-for="item in movielist" :key="item.filmId">
+      <li v-for="item in movielist" :key="item.filmId" @tap="handleToDetail(item.filmId)">
         <div class="pic_show">
           <img :src="item.poster" />
         </div>
@@ -56,6 +56,10 @@ export default {
     });
   },
   methods: {
+     handleToDetail(movieId) {
+      // console.log(movieId);
+      this.$router.push('/movie/detail/2/' + movieId);
+    },
 	  showtime:function(time){
 		   // 格式化日期
 		var d = new Date();
